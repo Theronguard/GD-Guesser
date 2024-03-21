@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://djjxxpe7feboc"]
+
+[node name="Pack Button" type="Button"]
+custom_minimum_size = Vector2(0, 100)
+offset_right = 333.0
+offset_bottom = 100.0
+mouse_filter = 1
+theme_type_variation = &"NormalButton"
+text = "Pack name"
+icon_alignment = 1

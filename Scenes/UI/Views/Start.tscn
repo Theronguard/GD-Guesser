@@ -1,0 +1,196 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfhjhunh2rft2"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Views/StartView.cs" id="1_ji3j4"]
+[ext_resource type="PackedScene" uid="uid://djjxxpe7feboc" path="res://Scenes/UI/Elements/PackButton.tscn" id="2_mjn2i"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p4bwo"]
+light_mode = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a64gx"]
+bg_color = Color(0, 0, 0, 0.196078)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="Start" type="Control" node_paths=PackedStringArray("PackButtonSpawnParent", "AmountOfPrompts", "TimeToAnswer")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_ji3j4")
+PackButton = ExtResource("2_mjn2i")
+PackButtonSpawnParent = NodePath("Panel/MarginContainer/Control/VBoxContainer/HBoxContainer/Left/List/ScrollContainer/MarginContainer/Packs")
+AmountOfPrompts = NodePath("Panel/MarginContainer/Control/VBoxContainer/HBoxContainer/Right/Navigation/MarginContainer/Settings/Prompt Amount")
+TimeToAnswer = NodePath("Panel/MarginContainer/Control/VBoxContainer/HBoxContainer/Right/Navigation/MarginContainer/Settings/Time to answer")
+
+[node name="Panel" type="Panel" parent="."]
+material = SubResource("CanvasItemMaterial_p4bwo")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -850.0
+offset_top = -450.0
+offset_right = 850.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Control" type="Control" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -280.0
+offset_top = 9.0
+offset_right = 281.0
+offset_bottom = 184.0
+grow_horizontal = 2
+theme_type_variation = &"TitleLabel"
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 206.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+theme_override_constants/separation = 16
+
+[node name="Left" type="VBoxContainer" parent="Panel/MarginContainer/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 16
+
+[node name="List" type="Panel" parent="Panel/MarginContainer/Control/VBoxContainer/HBoxContainer/Left"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_type_variation = &"PanelDarkInside"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/Control/VBoxContainer/HBoxContainer/Left/List"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/Control/VBoxContainer/HBoxContainer/Left/List/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Packs" type="VBoxContainer" parent="Panel/MarginContainer/Control/VBoxContainer/HBoxContainer/Left/List/ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Right" type="VBoxContainer" parent="Panel/MarginContainer/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Navigation" type="Panel" parent="Panel/MarginContainer/Control/VBoxContainer/HBoxContainer/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_a64gx")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/Control/VBoxContainer/HBoxContainer/Right/Navigation"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Settings" type="VBoxContainer" parent="Panel/MarginContainer/Control/VBoxContainer/HBoxContainer/Right/Navigation/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Time to answer" type="LineEdit" parent="Panel/MarginContainer/Control/VBoxContainer/HBoxContainer/Right/Navigation/MarginContainer/Settings"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Time to answer"
+alignment = 1
+max_length = 32
+virtual_keyboard_type = 2
+
+[node name="Prompt Amount" type="LineEdit" parent="Panel/MarginContainer/Control/VBoxContainer/HBoxContainer/Right/Navigation/MarginContainer/Settings"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Amount of prompts"
+alignment = 1
+max_length = 32
+virtual_keyboard_type = 2
+structured_text_bidi_override = 2
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/Control/VBoxContainer/HBoxContainer/Right/Navigation/MarginContainer/Settings"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.3
+theme_override_constants/separation = 16
+
+[node name="Start" type="Button" parent="Panel/MarginContainer/Control/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+text = "Start"
+
+[node name="Back" type="Button" parent="Panel/MarginContainer/Control/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Back"
+
+[connection signal="pressed" from="Panel/MarginContainer/Control/VBoxContainer/Buttons/Start" to="." method="OnStartGamePressed"]
+[connection signal="pressed" from="Panel/MarginContainer/Control/VBoxContainer/Buttons/Back" to="." method="OnBackPressed"]

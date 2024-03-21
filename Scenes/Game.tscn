@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://cpnuewxwk8esk"]
+
+[ext_resource type="Script" path="res://Scripts/Game.cs" id="1_64qic"]
+[ext_resource type="Script" path="res://Scripts/UI/Views/ViewSwitcher.cs" id="2_h2bif"]
+[ext_resource type="PackedScene" uid="uid://3y2w3oi0k40k" path="res://Scenes/UI/Views/Game View.tscn" id="3_0hcj0"]
+[ext_resource type="PackedScene" uid="uid://clct2qcsb6ljp" path="res://Scenes/UI/View Models/Game ViewModel.tscn" id="3_6dqfn"]
+[ext_resource type="PackedScene" uid="uid://dh700gt44xi5g" path="res://Scenes/UI/Views/Finish View.tscn" id="4_v3a8a"]
+[ext_resource type="Script" path="res://Scripts/UI/View Models/FinishViewModel.cs" id="6_udmmc"]
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("ViewModel")]
+script = ExtResource("1_64qic")
+ViewModel = NodePath("View Models/Game ViewModel")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Views" type="Node" parent="CanvasLayer"]
+script = ExtResource("2_h2bif")
+
+[node name="Game View" parent="CanvasLayer/Views" node_paths=PackedStringArray("ViewModel", "FinishView") instance=ExtResource("3_0hcj0")]
+ViewModel = NodePath("../../../View Models/Game ViewModel")
+FinishView = NodePath("../Finish View")
+
+[node name="Finish View" parent="CanvasLayer/Views" node_paths=PackedStringArray("ViewModel") instance=ExtResource("4_v3a8a")]
+visible = false
+ViewModel = NodePath("../../../View Models/Finish ViewModel")
+
+[node name="View Models" type="Node" parent="."]
+
+[node name="Game ViewModel" parent="View Models" node_paths=PackedStringArray("FinishViewModel") instance=ExtResource("3_6dqfn")]
+FinishViewModel = NodePath("../Finish ViewModel")
+
+[node name="Finish ViewModel" type="Node" parent="View Models"]
+script = ExtResource("6_udmmc")

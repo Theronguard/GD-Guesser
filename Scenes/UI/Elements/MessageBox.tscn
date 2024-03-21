@@ -1,0 +1,96 @@
+[gd_scene load_steps=2 format=3 uid="uid://djwe7pib000bs"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Elements/MessageBox.cs" id="1_lrqnq"]
+
+[node name="MessageBox" type="Control" node_paths=PackedStringArray("YesButton", "NoButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_lrqnq")
+YesButton = NodePath("Panel/HBoxContainer/MarginContainer/HBoxContainer/HBoxContainer/Button")
+NoButton = NodePath("Panel/HBoxContainer/MarginContainer/HBoxContainer/HBoxContainer/Button2")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Warning!"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Are you sure?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 50
+
+[node name="Button" type="Button" parent="Panel/HBoxContainer/MarginContainer/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Yes"
+
+[node name="Button2" type="Button" parent="Panel/HBoxContainer/MarginContainer/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_type_variation = &"NegativeButton"
+text = "No"
+
+[connection signal="pressed" from="Panel/HBoxContainer/MarginContainer/HBoxContainer/HBoxContainer/Button" to="." method="OnPressedYes"]
+[connection signal="pressed" from="Panel/HBoxContainer/MarginContainer/HBoxContainer/HBoxContainer/Button2" to="." method="OnPressedNo"]

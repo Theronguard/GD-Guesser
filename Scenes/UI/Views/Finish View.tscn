@@ -1,0 +1,231 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh700gt44xi5g"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Views/FinishView.cs" id="1_aypwa"]
+[ext_resource type="PackedScene" uid="uid://cp7motkbpybco" path="res://Scenes/UI/Elements/Final Prompt Base.tscn" id="2_ibory"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b6e0s"]
+bg_color = Color(0.1659, 0.79, 0.561163, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+shadow_color = Color(0, 0, 0, 0.662745)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jjvu"]
+bg_color = Color(0.788235, 0.164706, 0.219608, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+shadow_color = Color(0, 0, 0, 0.662745)
+shadow_size = 8
+
+[node name="Finish View" type="Control" node_paths=PackedStringArray("GuessedPromptsParent", "FailedPromptsParent")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aypwa")
+GuessedPromptsParent = NodePath("Panel/MarginContainer/Prompts/Guessed/MarginContainer/VBoxContainer/Prompts/ScrollContainer/VBoxContainer")
+FailedPromptsParent = NodePath("Panel/MarginContainer/Prompts/Failed/MarginContainer/VBoxContainer/Prompts/ScrollContainer/VBoxContainer")
+PromptBase = ExtResource("2_ibory")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -805.5
+offset_top = -476.0
+offset_right = 805.5
+offset_bottom = 476.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 200
+
+[node name="Prompts" type="Control" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Guessed" type="Control" parent="Panel/MarginContainer/Prompts"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 600.0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_type_variation = &"PanelDarkInside"
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/Prompts/Guessed"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/Prompts/Guessed/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Panel" parent="Panel/MarginContainer/Prompts/Guessed/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_b6e0s")
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/Prompts/Guessed/MarginContainer/VBoxContainer/Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -11.5
+offset_right = 33.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.987946)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+text = "Guessed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Prompts" type="ColorRect" parent="Panel/MarginContainer/Prompts/Guessed/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+color = Color(0, 0, 0, 0.392157)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/Prompts/Guessed/MarginContainer/VBoxContainer/Prompts"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/Prompts/Guessed/MarginContainer/VBoxContainer/Prompts/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Failed" type="Control" parent="Panel/MarginContainer/Prompts"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -600.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_type_variation = &"PanelDarkInside"
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/Prompts/Failed"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/Prompts/Failed/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Panel" parent="Panel/MarginContainer/Prompts/Failed/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_4jjvu")
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/Prompts/Failed/MarginContainer/VBoxContainer/Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -11.5
+offset_right = 33.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.987946)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+text = "Failed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Prompts" type="ColorRect" parent="Panel/MarginContainer/Prompts/Failed/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+color = Color(0, 0, 0, 0.392157)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/Prompts/Failed/MarginContainer/VBoxContainer/Prompts"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/Prompts/Failed/MarginContainer/VBoxContainer/Prompts/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Failed Prompt Label Base" type="Label" parent="Panel/MarginContainer/Prompts/Failed/MarginContainer/VBoxContainer/Prompts/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Prompt text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(1400, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -700.0
+offset_top = -152.0
+offset_right = 700.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 86
+text = "BACK"
+
+[connection signal="pressed" from="Panel/Button" to="." method="OnBackPressed"]

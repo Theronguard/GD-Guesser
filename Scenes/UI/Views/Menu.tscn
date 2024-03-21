@@ -1,0 +1,138 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpscyctes6l33"]
+
+[ext_resource type="Theme" uid="uid://dbgptph0ngi6s" path="res://UI/Themes/Base.tres" id="1_2jyx4"]
+[ext_resource type="Script" path="res://Scripts/UI/Views/MenuView.cs" id="2_wya1q"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p4bwo"]
+light_mode = 1
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_2jyx4")
+script = ExtResource("2_wya1q")
+
+[node name="Panel" type="Panel" parent="."]
+material = SubResource("CanvasItemMaterial_p4bwo")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.5
+offset_top = -501.0
+offset_right = 400.5
+offset_bottom = 501.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 16
+
+[node name="Buttons" type="Control" parent="Panel/MarginContainer"]
+layout_direction = 1
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/Buttons"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.5
+offset_top = -200.0
+offset_right = 315.5
+offset_bottom = 425.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0052, 1)
+theme_override_constants/separation = 5
+
+[node name="Margin" type="MarginContainer" parent="Panel/MarginContainer/Buttons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 2
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/Buttons/VBoxContainer/Margin"]
+layout_mode = 2
+theme = ExtResource("1_2jyx4")
+theme_type_variation = &"ButtonBig"
+text = "Start"
+
+[node name="Margin2" type="MarginContainer" parent="Panel/MarginContainer/Buttons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 2
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/Buttons/VBoxContainer/Margin2"]
+layout_mode = 2
+theme_type_variation = &"ButtonBig"
+theme_override_colors/icon_focus_color = Color(1, 0, 0, 1)
+text = "Packs"
+
+[node name="Margin3" type="MarginContainer" parent="Panel/MarginContainer/Buttons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 2
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/Buttons/VBoxContainer/Margin3"]
+layout_mode = 2
+theme_type_variation = &"NegativeButton"
+theme_override_font_sizes/font_size = 84
+text = "Quit"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/Buttons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -685.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/Buttons/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"TitleLabel"
+text = "GD 
+Guesser"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="pressed" from="Panel/MarginContainer/Buttons/VBoxContainer/Margin/Button" to="." method="OnStartPressed"]
+[connection signal="pressed" from="Panel/MarginContainer/Buttons/VBoxContainer/Margin2/Button" to="." method="OnPacksPressed"]
+[connection signal="pressed" from="Panel/MarginContainer/Buttons/VBoxContainer/Margin3/Button" to="." method="OnQuitPressed"]

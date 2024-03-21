@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuadsx3awhcvc"]
+
+[ext_resource type="PackedScene" uid="uid://dpscyctes6l33" path="res://Scenes/UI/Views/Menu.tscn" id="1_il5rm"]
+[ext_resource type="Script" path="res://Scripts/UI/Views/ViewSwitcher.cs" id="1_yj1w3"]
+[ext_resource type="PackedScene" uid="uid://c5261urmrb74u" path="res://Scenes/UI/Views/Packs.tscn" id="2_i6sqo"]
+[ext_resource type="PackedScene" uid="uid://da1n2aeikyitw" path="res://Scenes/UI/Views/Prompts.tscn" id="4_aoqmy"]
+[ext_resource type="PackedScene" uid="uid://cfhjhunh2rft2" path="res://Scenes/UI/Views/Start.tscn" id="5_tiamj"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="Views" type="Node" parent="Canvas"]
+script = ExtResource("1_yj1w3")
+
+[node name="Menu" parent="Canvas/Views" node_paths=PackedStringArray("PacksView", "StartView") instance=ExtResource("1_il5rm")]
+scale = Vector2(1, 1.00833)
+PacksView = NodePath("../Packs")
+StartView = NodePath("../Start")
+
+[node name="Prompts" parent="Canvas/Views" node_paths=PackedStringArray("BackView") instance=ExtResource("4_aoqmy")]
+visible = false
+BackView = NodePath("../Packs")
+
+[node name="Packs" parent="Canvas/Views" node_paths=PackedStringArray("PromptView", "BackView") instance=ExtResource("2_i6sqo")]
+visible = false
+PromptView = NodePath("../Prompts")
+BackView = NodePath("../Menu")
+
+[node name="Start" parent="Canvas/Views" node_paths=PackedStringArray("BackView") instance=ExtResource("5_tiamj")]
+visible = false
+BackView = NodePath("../Menu")

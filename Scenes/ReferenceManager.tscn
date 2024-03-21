@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cichm0jkdcm5w"]
+
+[ext_resource type="Script" path="res://Scripts/ReferenceManager.cs" id="1_oqp6v"]
+[ext_resource type="PackedScene" uid="uid://djwe7pib000bs" path="res://Scenes/UI/Elements/MessageBox.tscn" id="2_vghv0"]
+
+[node name="ReferenceManager" type="Node"]
+script = ExtResource("1_oqp6v")
+MessageBox = ExtResource("2_vghv0")

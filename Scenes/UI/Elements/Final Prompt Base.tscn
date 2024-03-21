@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp7motkbpybco"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Elements/FinalPrompt.cs" id="1_cq5se"]
+
+[node name="Final Prompt Base" type="MarginContainer" node_paths=PackedStringArray("PromptLabel")]
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 0
+script = ExtResource("1_cq5se")
+PromptLabel = NodePath("Final Prompt")
+
+[node name="ColorRect" type="Panel" parent="."]
+layout_mode = 2
+theme_type_variation = &"FinalPanel"
+
+[node name="Final Prompt" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Base prompt"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://clct2qcsb6ljp"]
+
+[ext_resource type="Script" path="res://Scripts/UI/View Models/GameViewModel.cs" id="1_oqh7b"]
+
+[node name="Game ViewModel" type="Node" node_paths=PackedStringArray("CardTimer")]
+script = ExtResource("1_oqh7b")
+CardTimer = NodePath("Card Timer")
+
+[node name="Card Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true

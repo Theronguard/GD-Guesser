@@ -1,0 +1,178 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5261urmrb74u"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Views/PacksView.cs" id="1_er8io"]
+[ext_resource type="PackedScene" uid="uid://djjxxpe7feboc" path="res://Scenes/UI/Elements/PackButton.tscn" id="2_mjn2i"]
+[ext_resource type="PackedScene" uid="uid://cf4okmaa5k0a1" path="res://Scenes/UI/Elements/PromptButton.tscn" id="3_g5026"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1fro"]
+bg_color = Color(0, 0, 0, 0.196078)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="Packs" type="Control" node_paths=PackedStringArray("NameInput", "PackButtonSpawnParent")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_er8io")
+NameInput = NodePath("Panel/MarginContainer/Control/HBoxContainer/VBoxContainer/Navigation/MarginContainer/Buttons/Name Input")
+PackButton = ExtResource("2_mjn2i")
+PackButtonSpawnParent = NodePath("Panel/MarginContainer/Control/HBoxContainer/List/ScrollContainer/MarginContainer/VBoxContainer")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -850.0
+offset_top = -450.0
+offset_right = 850.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Control" type="Control" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -660.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"TitleLabel"
+text = "Packs"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 207.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="List" type="Panel" parent="Panel/MarginContainer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_type_variation = &"PanelDarkInside"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/Control/HBoxContainer/List"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/Control/HBoxContainer/List/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/Control/HBoxContainer/List/ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/Control/HBoxContainer/List/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Prompt Button" parent="Panel/MarginContainer/Control/HBoxContainer/List/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_g5026")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Navigation" type="Panel" parent="Panel/MarginContainer/Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"PanelDarkInside"
+theme_override_styles/panel = SubResource("StyleBoxFlat_a1fro")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/Control/HBoxContainer/VBoxContainer/Navigation"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 32
+
+[node name="Buttons" type="VBoxContainer" parent="Panel/MarginContainer/Control/HBoxContainer/VBoxContainer/Navigation/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Name Input" type="LineEdit" parent="Panel/MarginContainer/Control/HBoxContainer/VBoxContainer/Navigation/MarginContainer/Buttons"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Name"
+alignment = 1
+max_length = 21
+virtual_keyboard_type = 7
+structured_text_bidi_override = 2
+
+[node name="Add" type="Button" parent="Panel/MarginContainer/Control/HBoxContainer/VBoxContainer/Navigation/MarginContainer/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Add"
+
+[node name="Edit" type="Button" parent="Panel/MarginContainer/Control/HBoxContainer/VBoxContainer/Navigation/MarginContainer/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Edit"
+
+[node name="Remove" type="Button" parent="Panel/MarginContainer/Control/HBoxContainer/VBoxContainer/Navigation/MarginContainer/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"NegativeButton"
+text = "Remove"
+
+[node name="Back" type="Button" parent="Panel/MarginContainer/Control/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+theme_override_font_sizes/font_size = 64
+text = "Back"
+
+[connection signal="pressed" from="Panel/MarginContainer/Control/HBoxContainer/VBoxContainer/Navigation/MarginContainer/Buttons/Add" to="." method="OnAddPressed"]
+[connection signal="pressed" from="Panel/MarginContainer/Control/HBoxContainer/VBoxContainer/Navigation/MarginContainer/Buttons/Edit" to="." method="OnEditPressed"]
+[connection signal="pressed" from="Panel/MarginContainer/Control/HBoxContainer/VBoxContainer/Navigation/MarginContainer/Buttons/Remove" to="." method="OnRemovePressed"]
+[connection signal="pressed" from="Panel/MarginContainer/Control/HBoxContainer/VBoxContainer/Back" to="." method="OnBackPressed"]

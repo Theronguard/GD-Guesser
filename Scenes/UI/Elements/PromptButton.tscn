@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf4okmaa5k0a1"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Elements/PromptButton.cs" id="1_46uml"]
+
+[node name="Prompt Button" type="Button" node_paths=PackedStringArray("DeleteButton", "PromptText")]
+custom_minimum_size = Vector2(0, 140)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_right = 16.0
+offset_bottom = 140.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 48
+text_overrun_behavior = 3
+script = ExtResource("1_46uml")
+DeleteButton = NodePath("HBoxContainer2/Delete Button")
+PromptText = NodePath("HBoxContainer2/MarginContainer/Label")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="HBoxContainer2/MarginContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Prompt
+Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 1
+
+[node name="Delete Button" type="Button" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+theme_type_variation = &"NegativeButton"
+theme_override_font_sizes/font_size = 48
+text = "X"
